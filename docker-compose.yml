@@ -3,7 +3,7 @@ db:
   ports:
     - "54322:5432"
   env_file:
-    - .env
+    - docker-compose.env
 web:
   build: .
   volumes:
@@ -22,7 +22,7 @@ notebook:
   ports:
     - ${NOTEBOOK_PORT}:8888
   env_file:
-    - .env
+    - docker-compose.env
   links:
     - db
   command: "start-notebook.sh \
