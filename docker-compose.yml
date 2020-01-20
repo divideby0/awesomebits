@@ -15,8 +15,6 @@ web:
 notebook:
   # build: notebook
   image: rubydata/datascience-notebook
-  environment:
-    GRANT_SUDO: "yes"
   volumes:
     - ./notebook:/home/jovyan/work
   ports:
