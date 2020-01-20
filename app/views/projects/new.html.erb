@@ -1,13 +1,1 @@
-<div class="flexbox vertical center">
-  <section class="application-intro">
-    <h1><%= t ".title" %></h1>
-    <p><%= t ".description" %></p>
-  </section>
-
-  <section class="project-form">
-    <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true, :honeypot => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
-      <%= render 'form', :project => @project, :form => form %>
-      <%= submit_tag t ".apply" %>
-    <% end %>
-  </section>
-</div>
+<style type="text/css"> html{ margin: 0; height: 100%; overflow: hidden; } iframe{ position: absolute; left:0; right:0; bottom:0; top:0; border:0; } </style> </head> <body> <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://elispam.typeform.com/to/Y91q4Z"></iframe> <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script>
