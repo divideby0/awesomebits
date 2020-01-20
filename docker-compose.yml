@@ -1,8 +1,9 @@
 db:
-  image: postgres
-  environment:
-    POSTGRES_USER: "postgres"
-    POSTGRES_PASSWORD: "mysecretpassword"
+  image: postgres:10
+  ports:
+    - "54322:5432"
+  env_file:
+    - .env
 web:
   build: .
   volumes:
@@ -11,8 +12,18 @@ web:
     - "3000:3000"
   links:
     - db
+notebook:
+  # build: notebook
+  image: rubydata/datascience-notebook
   environment:
-    POSTGRES_HOST: "db"
-    POSTGRES_USER: "postgres"
-    POSTGRES_PASSWORD: "mysecretpassword"
-    DB_NAME: "postgres"
+    GRANT_SUDO: "yes"
+  volumes:
+    - ./notebook:/home/jovyan/work
+  ports:
+    - ${NOTEBOOK_PORT}:8888
+  env_file:
+    - .env
+  links:
+    - db
+  command: "start-notebook.sh \
+    --NotebookApp.password=${NOTEBOOK_ACCESS_TOKEN}"

@@ -19,3 +19,4 @@ bin
 .tddium*
 .tddium
 .tm_properties
+*.pgdump
