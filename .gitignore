@@ -20,3 +20,4 @@ bin
 .tddium
 .tm_properties
 *.pgdump
+notebook/.ipynb_checkpoints/

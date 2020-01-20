@@ -3,7 +3,7 @@ db:
   ports:
     - "54322:5432"
   env_file:
-    - docker-compose.env
+    - ./docker-compose.env
 web:
   build: .
   volumes:
@@ -18,10 +18,10 @@ notebook:
   volumes:
     - ./notebook:/home/jovyan/work
   ports:
-    - ${NOTEBOOK_PORT}:8888
+    - "8888:8888"
   env_file:
-    - docker-compose.env
+    - ./docker-compose.env
   links:
     - db
   command: "start-notebook.sh \
-    --NotebookApp.password=${NOTEBOOK_ACCESS_TOKEN}"
+    --NotebookApp.password=sha1:f9c9756ad0f9:fac50da3912b54df56e635823af7460b7c0304fc"
